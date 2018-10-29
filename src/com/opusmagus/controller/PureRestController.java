@@ -12,17 +12,17 @@ import com.opusmagus.dto.Customer;
  * in the URL path. That includes /welcome/* and /welcome.html
  */
 @RestController
-@RequestMapping(value = "/pure-rest", method = RequestMethod.POST)
+@RequestMapping(value = "/pure-rest")
 public class PureRestController {
 	
-	@RequestMapping("/customer")
+	/*@RequestMapping(value = "/customer", method = RequestMethod.GET)
 	public Customer customer(String id) {
 		Customer customer = new Customer();
 		customer.Name = "Michael Sundgaard";
 		customer.Gender = "Male";
-		customer.Address = "Mosede Kærvej 37";
+		customer.Address = "Mosede KÃ¦rvej 37";
 		customer.Id = id;
 		return customer;
-	}
+	}*/
 
 }

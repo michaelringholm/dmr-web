@@ -8,7 +8,7 @@
 </style>
 </head>
 <body>
-	<h1>Welcome to DMR WebService Proxy</h1>
+	<h1>Welcome to DMR WebService Proxy v1.0.2</h1>
 	<a href="welcome">welcome service</a>
 	<a href="status">status service</a>
 </body>

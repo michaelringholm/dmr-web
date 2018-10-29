@@ -1,0 +1,110 @@
+
+package dk.skat.dmr._2007._05._31;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for ForsikringSelskabStrukturType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="ForsikringSelskabStrukturType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{http://skat.dk/dmr/2007/05/31/}ForsikringSelskabNummer"/&gt;
+ *         &lt;element ref="{http://skat.dk/dmr/2007/05/31/}ForsikringSelskabNavn"/&gt;
+ *         &lt;element ref="{http://skat.dk/dmr/2007/05/31/}ForsikringSelskabErMidlertidig"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ForsikringSelskabStrukturType", propOrder = {
+    "forsikringSelskabNummer",
+    "forsikringSelskabNavn",
+    "forsikringSelskabErMidlertidig"
+})
+public class ForsikringSelskabStrukturType {
+
+    @XmlElement(name = "ForsikringSelskabNummer", required = true)
+    protected String forsikringSelskabNummer;
+    @XmlElement(name = "ForsikringSelskabNavn", required = true)
+    protected String forsikringSelskabNavn;
+    @XmlElement(name = "ForsikringSelskabErMidlertidig")
+    protected boolean forsikringSelskabErMidlertidig;
+
+    /**
+     * Gets the value of the forsikringSelskabNummer property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getForsikringSelskabNummer() {
+        return forsikringSelskabNummer;
+    }
+
+    /**
+     * Sets the value of the forsikringSelskabNummer property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setForsikringSelskabNummer(String value) {
+        this.forsikringSelskabNummer = value;
+    }
+
+    /**
+     * Gets the value of the forsikringSelskabNavn property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getForsikringSelskabNavn() {
+        return forsikringSelskabNavn;
+    }
+
+    /**
+     * Sets the value of the forsikringSelskabNavn property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setForsikringSelskabNavn(String value) {
+        this.forsikringSelskabNavn = value;
+    }
+
+    /**
+     * Gets the value of the forsikringSelskabErMidlertidig property.
+     * 
+     */
+    public boolean isForsikringSelskabErMidlertidig() {
+        return forsikringSelskabErMidlertidig;
+    }
+
+    /**
+     * Sets the value of the forsikringSelskabErMidlertidig property.
+     * 
+     */
+    public void setForsikringSelskabErMidlertidig(boolean value) {
+        this.forsikringSelskabErMidlertidig = value;
+    }
+
+}
