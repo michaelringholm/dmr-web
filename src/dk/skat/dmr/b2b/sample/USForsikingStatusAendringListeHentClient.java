@@ -16,6 +16,8 @@ import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
 import org.xml.sax.SAXException;
 
+import com.google.gson.Gson;
+
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.AdvisStrukturType;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.FejlStrukturType;
 import dk.oio.rep.skat_dk.basis.kontekst.xml.schemas._2006._09._01.HovedOplysningerType;
@@ -77,7 +79,7 @@ public class USForsikingStatusAendringListeHentClient {
    * @throws SAXException                   N/A
    */
   @SuppressWarnings("restriction")
-  public void invoke(USForsikringService service, Bus bus)
+  public String invoke(USForsikringService service, Bus bus)
       throws DatatypeConfigurationException, ParserConfigurationException, IOException, SAXException {
 
     final String newLine = System.getProperty("line.separator");
@@ -117,24 +119,24 @@ public class USForsikingStatusAendringListeHentClient {
     sbRequest.append("** Endpoint: ").append(endpointURL).append(newLine);
     sbRequest.append("*******************************************************************").append(newLine);
     sbRequest.append("** HovedOplysninger").append(newLine);
-    sbRequest.append("**** Transaction Id: ")
-        .append(usForsikringStatusAendringHentIType.getHovedOplysninger().getTransaktionIdentifikator())
-        .append(newLine);
-    sbRequest.append("**** Transaction Time: ")
-        .append(usForsikringStatusAendringHentIType.getHovedOplysninger().getTransaktionTid()).append(newLine);
+    sbRequest.append("**** Transaction Id: ").append(usForsikringStatusAendringHentIType.getHovedOplysninger().getTransaktionIdentifikator()).append(newLine);
+    sbRequest.append("**** Transaction Time: ").append(usForsikringStatusAendringHentIType.getHovedOplysninger().getTransaktionTid()).append(newLine);
     sbRequest.append("*******************************************************************").append(newLine);
     LOGGER.info(newLine + sbRequest.toString());
 
-    USForsikringStatusAendringListeHentO out = port
-        .getUSForsikringStatusAendringListeHent(usForsikringStatusAendringHentIType);
+    USForsikringStatusAendringListeHentO out = port.getUSForsikringStatusAendringListeHent(usForsikringStatusAendringHentIType);
+    
+    Gson jsonConverter = new Gson();
+    //String vehicleInsuranceChangeJSON = jsonConverter.toJson(out.getForsikringStatusAendringListe());
+    //String vehicleInsuranceServiceMetaDataJSON = jsonConverter.toJson(out.getHovedOplysningerSvar());
+    String vehicleInsuranceChangeJSON = jsonConverter.toJson(out);
+    
     StringBuilder sb = new StringBuilder();
     sb.append("*******************************************************************").append(newLine);
     sb.append("** HovedOplysningerSvar").append(newLine);
-    sb.append("**** Transaction Id: ").append(out.getHovedOplysningerSvar().getTransaktionIdentifikator())
-        .append(newLine);
+    sb.append("**** Transaction Id: ").append(out.getHovedOplysningerSvar().getTransaktionIdentifikator()).append(newLine);
     sb.append("**** Transaction Time: ").append(out.getHovedOplysningerSvar().getTransaktionTid()).append(newLine);
-    sb.append("**** Service Identification: ").append(out.getHovedOplysningerSvar().getServiceIdentifikator())
-        .append(newLine);
+    sb.append("**** Service Identification: ").append(out.getHovedOplysningerSvar().getServiceIdentifikator()).append(newLine);
     if (out.getHovedOplysningerSvar().getSvarStruktur().getAdvisStrukturOrFejlStruktur().size() > 0) {
       for (Object errorOrAdvis : out.getHovedOplysningerSvar().getSvarStruktur().getAdvisStrukturOrFejlStruktur()) {
         if (errorOrAdvis instanceof FejlStrukturType) {
@@ -157,7 +159,7 @@ public class USForsikingStatusAendringListeHentClient {
     sb.append("*******************************************************************").append(newLine);
 
     LOGGER.info(newLine + sb.toString());
-    //return sb.toString();
+    return vehicleInsuranceChangeJSON;
   }
 
   // Added by MRS
