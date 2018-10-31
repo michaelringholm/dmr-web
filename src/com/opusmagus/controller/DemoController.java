@@ -56,13 +56,13 @@ public class DemoController {
 
 	      String endpointURL = "https://dmrsit1gateway1.skat.dk/B2B/USForsikring/Service";
 	      USForsikingStatusAendringListeHentClient oioLedsageDocumentClient = new USForsikingStatusAendringListeHentClient(endpointURL);
-	      String response = oioLedsageDocumentClient.invoke(forsikringService, bus);
+	      String vehicleInsuranceChangeResponse = oioLedsageDocumentClient.invoke(forsikringService, bus);
 	      //oioLedsageDocumentClient.invoke(forsikringService, bus);
 	      System.out.println("DMR invocation ended.");
-	      return "{dmr:ok}";
+	      return vehicleInsuranceChangeResponse;
 	    }
 	    catch(Exception ex) {	    	
-	      System.out.println("DMR invocation badly!");
+	      System.out.println("DMR invocation ended badly!");
 	      ex.printStackTrace();
 	    }
 	    
