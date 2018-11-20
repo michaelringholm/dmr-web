@@ -11,6 +11,6 @@
 	<h1>Welcome to DMR WebService Proxy v1.0.3</h1>
 	<a href="welcome">welcome service</a><br>
 	<a href="status">status service</a><br>
-	<a href="dmr">dmr service</a><br>
+	<a href="changes?fromDate=01-01-2016 00:00:00.001">DMR vehicle changes</a><br>
 </body>
 </html>

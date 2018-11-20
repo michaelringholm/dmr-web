@@ -43,11 +43,12 @@
 
      -->
     <http:conduit name="*.http-conduit">
-        <!-- Set timeout to 3 minutes -->
+        <!-- Set timeout to 12 minutes -->
         <http:client Connection="Keep-Alive"
                      MaxRetransmits="1"
                      AllowChunking="false"
-                     ConnectionTimeout="180000"/>
+                     ConnectionTimeout="720000"
+                     ReceiveTimeout="720000"/>
         <http:tlsClientParameters>
             <sec:keyManagers keyPassword="storepassword">
                 <sec:keyStore  resource="client-truststore.jks"
@@ -83,7 +84,7 @@
                         <entry key="action" value="Timestamp Signature"/>
                         <entry key="passwordCallbackClass" value="dk.skat.dmr.b2b.sample.UTPasswordCallback"/>
                         <!-- Signature Configuration -->
-                        <entry key="signaturePropFile" value="etc/Client_Encrypt.properties"/>
+                        <entry key="signaturePropFile" value="Client_Encrypt.properties"/> <!-- MRS - Relative path to policy.xml -->
                         <entry key="signatureKeyIdentifier" value="DirectReference"/>
                         <entry key="signatureAlgorithm" value="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
                     </map>
@@ -108,7 +109,7 @@
                         <!-- Signature Configuration -->
                         <entry key="signatureParts" value="{Element}{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd}Timestamp;{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body;{Element}{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}BinarySecurityToken"/>
                         <entry key="signatureKeyIdentifier" value="DirectReference"/>
-                        <entry key="signaturePropFile" value="etc/Client_Sign.properties"/>
+                        <entry key="signaturePropFile" value="Client_Sign.properties"/> <!-- MRS - Relative path to policy.xml -->
                         <entry key="signatureAlgorithm" value="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
                     </map>
                 </constructor-arg>
