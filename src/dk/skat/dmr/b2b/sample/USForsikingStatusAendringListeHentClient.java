@@ -69,7 +69,8 @@ public class USForsikingStatusAendringListeHentClient {
 	}
 
 	private HovedOplysningerType getHeaderInfo() throws Exception {
-		final String prefix = "ACME_01_";
+		//final String prefix = "ACME_01_";
+		final String prefix = "COMMENTOR_";
 		String transactionID = UUID.randomUUID().toString();
 		if (prefix != null) {
 			transactionID = prefix + transactionID;
